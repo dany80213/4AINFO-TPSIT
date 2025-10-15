@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheduling Simulation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+
+<div class="container">
+    <h1 class="mb-4">Scheduling Simulation</h1>
+
+    <!-- Input JSON -->
+    <div class="mb-3">
+        <label for="jsonInput" class="form-label">Inserisci JSON dei Task</label>
+        <textarea class="form-control" id="jsonInput" rows="6"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="jsonFile" class="form-label">Oppure carica file JSON</label>
+        <input class="form-control" type="file" id="jsonFile" accept=".json">
+    </div>
+
+    <!-- Genera n task -->
+    <div class="mb-3 d-flex gap-2 align-items-center">
+        <input type="number" class="form-control" id="numTasks" placeholder="Numero task casuali">
+        <button class="btn btn-primary" id="generateTasks">Genera Task</button>
+    </div>
+
+    <!-- Selezione algoritmi -->
+    <div class="mb-3">
+        <label class="form-label">Seleziona algoritmi</label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="fcfsCheck" value="FCFS">
+            <label class="form-check-label" for="fcfsCheck">FCFS</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="sjfCheck" value="SJF">
+            <label class="form-check-label" for="sjfCheck">SJF</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="priorityCheck" value="Priority">
+            <label class="form-check-label" for="priorityCheck">Priority</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="rrCheck" value="RR">
+            <label class="form-check-label" for="rrCheck">Round Robin</label>
+        </div>
+    </div>
+
+    <button class="btn btn-success mb-4" id="runButton">Esegui</button>
+
+    <div id="results"></div>
+</div>
+
+<script src="schedule.js"></script>
+</body>
+</html>
