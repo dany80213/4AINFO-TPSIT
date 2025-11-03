@@ -37,10 +37,6 @@ createApp({
 
     },
     computed: {
-        grammi(){
-            return this.chilogrammi * 1000
-        },
-
         carrello() {
             let totale = 0;
             for (let i = 0; i < this.carrelloArray.length; i++) {
