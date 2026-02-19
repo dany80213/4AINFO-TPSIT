@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post</title>
+</head>
+<body>
+  <p><a href="/postGallery">← Torna alla gallery</a></p>
+
+  <h1><%= post.message %></h1>
+  <p><%= post.description %></p>
+  <small><%= post.createdAt %></small>
+
+  <hr/>
+
+  <% if (post.imagePath) { %>
+    <img src="<%= post.imagePath %>" alt="immagine post" style="max-width: 100%; height: auto;" />
+  <% } else { %>
+    <p>Nessuna immagine associata a questo post.</p>
+  <% } %>
+</body>
+</html>

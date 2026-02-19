@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crea Post</title>
+</head>
+<body>
+  <h1>Crea un post</h1>
+
+  <form action="/post" method="POST" enctype="multipart/form-data">
+    <div>
+      <input type="text" name="message" placeholder="Titolo / messaggio" required />
+    </div>
+
+    <div>
+      <textarea name="description" placeholder="Descrizione (obbligatoria o facoltativa)" rows="4"></textarea>
+    </div>
+
+    <div>
+      <input type="file" name="image" accept="image/*" />
+    </div>
+
+    <button type="submit">Salva</button>
+  </form>
+
+  <p><a href="/postGallery">Vai alla gallery</a></p>
+</body>
+</html>
