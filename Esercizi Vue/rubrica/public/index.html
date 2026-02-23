@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rubrica Contatti</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+      <i class="fa-solid fa-check-circle toast-icon"></i>
+      <span id="toastMessage">Operazione completata</span>
+    </div>
+
+    <div class="app-container">
+      <header class="header">
+        <h1><i class="fa-solid fa-address-book"></i> Rubrica</h1>
+        <div class="search-bar">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Cerca contatto..." />
+        </div>
+      </header>
+
+      <div class="layout">
+        <!-- Sidebar Form -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <h2 id="formTitle">Nuovo Contatto</h2>
+            <button id="resetFormBtn" class="btn btn-secondary hidden" title="Annulla Modifica">
+              <i class="fa-solid fa-times"></i> Annulla
+            </button>
+          </div>
+          <form id="contactForm">
+            <input type="hidden" id="contactId" />
+            
+            <div class="form-group">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" required placeholder="Mario" />
+            </div>
+            
+            <div class="form-group">
+              <label for="cognome">Cognome *</label>
+              <input type="text" id="cognome" required placeholder="Rossi" />
+            </div>
+            
+            <div class="form-group">
+              <label for="telefono">Telefono *</label>
+              <input type="tel" id="telefono" required placeholder="333 1234567" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="mario.rossi@email.com" />
+            </div>
+            
+            <button type="submit" id="saveContactBtn" class="btn btn-primary w-100">
+              Salva Contatto
+            </button>
+          </form>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <!-- Empty state -->
+          <div id="emptyState" class="empty-state hidden">
+            <i class="fa-regular fa-folder-open empty-icon"></i>
+            <h3>Nessun contatto trovato</h3>
+          </div>
+
+          <!-- Loading -->
+          <div id="loadingState" class="loading-state">
+            Caricamento...
+          </div>
+
+          <!-- Grid -->
+          <div id="contactsGrid" class="contacts-grid hidden">
+            <!-- Contact cards dynamically injected here -->
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
