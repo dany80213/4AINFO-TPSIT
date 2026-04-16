@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista Items</h1>
+
+    <ul id="items-list"></ul>
+
+    <h2>Aggiungi Item</h2>
+    <input type="text" id="item-name" placeholder="Nome item">
+    <button onclick="addItem()">Aggiungi</button>
+
+    <script>
+        const API_URL = "http://localhost:3000/api/items";
+
+        async function loadItems() {
+            const res = await fetch(API_URL);
+            const items = await res.json();
+
+            const list = document.getElementById("items-list");
+            list.innerHTML = "";
+
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.id} - ${item.name}`;
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Elimina";
+                deleteBtn.onclick = () => deleteItem(item.id);
+
+                li.appendChild(deleteBtn);
+                list.appendChild(li);
+            });
+        }
+
+        async function addItem() {
+            const name = document.getElementById("item-name").value;
+
+            await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name })
+            });
+
+            document.getElementById("item-name").value = "";
+            loadItems();
+        }
+
+        async function deleteItem(id) {
+            console.log(id);
+            await fetch(`${API_URL}/${id}`, {
+                method: "DELETE"
+            });
+
+            loadItems();
+        }
+
+        loadItems();
+    </script>
+
+</body>
+</html>
